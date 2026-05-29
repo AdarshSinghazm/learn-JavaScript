@@ -4,7 +4,7 @@
 // ARRAY INITIALIZATION
 // =========================
 
-const myar = [1, 2, 3, 4, 5]
+const myar = [1, 2, 3, 4, 5,6]
 // direct array initialization
 
 const arr = new Array(2, 1, 4, 5, 6)

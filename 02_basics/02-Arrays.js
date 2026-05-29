@@ -94,8 +94,9 @@ console.log(Array.from(Object.keys(obj)))
 let a = 10
 let b = 20
 let c = 30
+let d =10
 
-console.log(Array.of(a, b, c))
+console.log(Array.of(a, b, c,d))
 // [10, 20, 30]
 
 // difference note:
