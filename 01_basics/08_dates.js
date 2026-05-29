@@ -71,7 +71,7 @@ console.log(
 );
 // returns weekday name (e.g., Wednesday)
 
-// =========================
+
 // REAL WORLD USE CASES
 // =========================
 

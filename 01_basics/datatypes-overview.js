@@ -48,7 +48,6 @@ console.log(typeof symbol1); // symbol
 /*
  NON-PRIMITIVE DATATYPES(Call by refrence)
  mostly their type is "object"
-
  Array
  Object
  Function

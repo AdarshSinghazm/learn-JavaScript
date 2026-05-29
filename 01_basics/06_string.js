@@ -275,10 +275,10 @@ console.log("He said \"Hello\"")
 // STRING + NUMBER WEIRD JS BEHAVIOR
 // ======================================
 
-console.log("1" + 2)
+console.log("1" + 2);
 // 12
 
-console.log("1" - 2)
+console.log("1" - 2);
 // -1
 
 // JS auto type conversion happens

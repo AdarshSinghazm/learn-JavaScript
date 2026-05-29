@@ -59,8 +59,8 @@ console.log(undefined == 0);  // false
  ==  -> checks only value
  === -> checks value + datatype
 */
-console.log(2 == "2");    // true
-console.log(2 === "2");   // false
+console.log(2 == "2")    // true
+console.log(2 === "2")  // false
 
 
 /*

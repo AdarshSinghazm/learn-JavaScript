@@ -25,6 +25,6 @@ let userOne = {
 
 let userTwo = userOne;
 userTwo.gmail = "rishu@gmail.com";
-console.table([userOne.gmail, userTwo.gmail]);
+console.table([userOne.gmail, userTwo.gmail])
 
 // both values changed because both variables point to same object in heap memory
