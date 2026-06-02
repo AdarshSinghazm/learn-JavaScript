@@ -20,7 +20,7 @@ const user = {
 
 // Updating object value
 
-// user.name = "Rishu";
+// user.name = "Rishu"; 
 // user.greet();
 
 
