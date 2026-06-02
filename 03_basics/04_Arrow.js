@@ -177,7 +177,7 @@ console.log(returnObj());
 // return value
 
 // Implicit Return:
-// value (without return keyword)
+// value 
 
 // Returning object from arrow function:
 // wrap object inside ()
