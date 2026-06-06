@@ -1,13 +1,15 @@
 /*
-What is reduce()?
+What is map()?
 
-reduce() combines multiple values into a SINGLE result.
+map() creates a NEW array by transforming every element
+of the original array.
 
 Think:
 
-map()    -> many values -> many values
-filter() -> many values -> fewer values
-reduce() -> many values -> ONE value
+forEach() -> iterate
+filter()  -> select
+map()     -> transform
+reduce()  -> combine
 */
 
 
@@ -16,66 +18,28 @@ reduce() -> many values -> ONE value
 // =============================================================
 
 /*
-array.reduce((accumulator, currentValue) => {
-    return updatedAccumulator;
-}, initialValue);
+array.map((element) => {
+    return transformedValue;
+});
 */
 
 
 // =============================================================
-// Parameters
+// Example 1: Add 10 to Every Element
 // =============================================================
+
+const nums = [1, 2, 3, 4, 5];
+
+const newNums = nums.map((num) => {
+    return num + 10;
+});
+
+console.log(newNums);
 
 /*
-accumulator (acc)
-    -> stores the running result
+Output:
 
-currentValue (curr)
-    -> current element being processed
-
-initialValue
-    -> starting value of accumulator
-*/
-
-
-// =============================================================
-// Example 1: Sum of Array
-// =============================================================
-
-const nums = [1, 2, 3, 4];
-
-const sum = nums.reduce((acc, curr) => {
-    return acc + curr;
-}, 0);
-
-console.log(sum); // 10
-
-
-/*
-Dry Run:
-
-acc = 0, curr = 1  -> return 1
-acc = 1, curr = 2  -> return 3
-acc = 3, curr = 3  -> return 6
-acc = 6, curr = 4  -> return 10
-
-Final Answer = 10
-*/
-
-
-// =============================================================
-// Important Concept
-// =============================================================
-
-/*
-Whatever you return becomes the next accumulator.
-
-Example:
-
-return acc + curr;
-
-The returned value is stored in acc
-for the next iteration.
+[11, 12, 13, 14, 15]
 */
 
 
@@ -83,130 +47,246 @@ for the next iteration.
 // Short Form
 // =============================================================
 
-const total = nums.reduce(
-    (acc, curr) => acc + curr,
-    0
-);
+const updatedNums = nums.map(num => num + 10);
 
-console.log(total);
+console.log(updatedNums);
 
 
 // =============================================================
-// Example 2: Find Maximum Element
+// Original Array is NOT Modified
 // =============================================================
 
-const arr = [10, 5, 20, 8, 30];
+const arr = [1, 2, 3];
 
-const max = arr.reduce((acc, curr) => {
-    return Math.max(acc, curr);
-});
+const doubled = arr.map(num => num * 2);
 
-console.log(max); // 30
-
-
-// =============================================================
-// Example 3: Find Minimum Element
-// =============================================================
-
-const min = arr.reduce((acc, curr) => {
-    return Math.min(acc, curr);
-});
-
-console.log(min); // 5
+console.log(arr);      // [1, 2, 3]
+console.log(doubled);  // [2, 4, 6]
 
 
 // =============================================================
-// Real World Example: Shopping Cart
+// Example 2: Square Every Number
 // =============================================================
 
-const cart = [
-    { item: "Mouse", price: 500 },
-    { item: "Keyboard", price: 1000 },
-    { item: "Monitor", price: 5000 }
-];
+const squares = nums.map(num => num * num);
 
-const cartTotal = cart.reduce((acc, item) => {
-    return acc + item.price;
-}, 0);
-
-console.log(cartTotal); // 6500
-
+console.log(squares);
 
 /*
-Dry Run:
-
-acc = 0      + 500  = 500
-acc = 500    +1000  = 1500
-acc = 1500   +5000  = 6500
+[1, 4, 9, 16, 25]
 */
 
 
 // =============================================================
-// Example 4: Count Occurrences
+// Example 3: Extract Titles from Objects
 // =============================================================
 
-const fruits = [
-    "apple",
-    "banana",
-    "apple",
-    "apple",
-    "banana"
+const books = [
+    { title: "The Hobbit", genre: "Fantasy" },
+    { title: "Harry Potter", genre: "Fantasy" },
+    { title: "Clean Code", genre: "Programming" }
 ];
 
-const frequency = fruits.reduce((acc, fruit) => {
+const titles = books.map(book => book.title);
 
-    acc[fruit] = (acc[fruit] || 0) + 1;
-
-    return acc;
-
-}, {});
-
-console.log(frequency);
+console.log(titles);
 
 /*
-Output:
-
-{
-    apple: 3,
-    banana: 2
-}
+[
+    "The Hobbit",
+    "Harry Potter",
+    "Clean Code"
+]
 */
 
 
 // =============================================================
-// Example 5: Build a String
+// map() MUST Return Something
 // =============================================================
 
-const words = ["I", "love", "JavaScript"];
-
-const sentence = words.reduce((acc, curr) => {
-    return acc + " " + curr;
+const result = nums.map((num) => {
+    return num + 10;
 });
 
-console.log(sentence);
-
-// "I love JavaScript"
+console.log(result);
 
 
-// =============================================================
-// Common Mistake
-// =============================================================
+/*
+If you forget return:
+*/
 
-const wrong = nums.reduce((acc, curr) => {
-    acc + curr;
-}, 0);
+const wrong = nums.map((num) => {
+    num + 10;
+});
 
 console.log(wrong);
 
 /*
 Output:
 
-undefined
+[undefined, undefined, undefined, undefined, undefined]
+*/
 
-Reason:
-You forgot to return.
 
-Always return the updated accumulator.
+// =============================================================
+// Difference Between map() and filter()
+// =============================================================
+
+/*
+filter()
+-> decides whether to keep an element
+
+map()
+-> changes an element
+*/
+
+
+const numbers = [1, 2, 3, 4, 5];
+
+const filtered = numbers.filter(num => num > 3);
+
+console.log(filtered);
+
+/*
+[4, 5]
+*/
+
+
+const mapped = numbers.map(num => num + 10);
+
+console.log(mapped);
+
+/*
+[11, 12, 13, 14, 15]
+*/
+
+
+// =============================================================
+// Chaining
+// =============================================================
+
+/*
+Method Chaining:
+
+Output of one method becomes
+input of the next method.
+*/
+
+
+// =============================================================
+// Example 1
+// =============================================================
+
+const chain1 = numbers
+    .map(num => num * 10)
+    .map(num => num + 1);
+
+console.log(chain1);
+
+/*
+[11, 21, 31, 41, 51]
+*/
+
+
+/*
+Dry Run:
+
+[1,2,3,4,5]
+
+map(num => num * 10)
+
+[10,20,30,40,50]
+
+map(num => num + 1)
+
+[11,21,31,41,51]
+*/
+
+
+// =============================================================
+// Example 2: map() + filter()
+// =============================================================
+
+const chain2 = numbers
+    .map(num => num * 10)
+    .filter(num => num >= 30);
+
+console.log(chain2);
+
+/*
+[30,40,50]
+*/
+
+
+/*
+Dry Run:
+
+[1,2,3,4,5]
+
+map()
+
+[10,20,30,40,50]
+
+filter()
+
+[30,40,50]
+*/
+
+
+// =============================================================
+// Example 3: filter() + map()
+// =============================================================
+
+const chain3 = numbers
+    .filter(num => num > 2)
+    .map(num => num * 10);
+
+console.log(chain3);
+
+/*
+[30,40,50]
+*/
+
+
+/*
+Dry Run:
+
+[1,2,3,4,5]
+
+filter()
+
+[3,4,5]
+
+map()
+
+[30,40,50]
+*/
+
+
+// =============================================================
+// Real World Example
+// =============================================================
+
+const booksData = [
+    { title: "The Hobbit", genre: "Fantasy" },
+    { title: "Harry Potter", genre: "Fantasy" },
+    { title: "Clean Code", genre: "Programming" },
+    { title: "Atomic Habits", genre: "Self Help" }
+];
+
+const fantasyTitles = booksData
+    .filter(book => book.genre === "Fantasy")
+    .map(book => book.title);
+
+console.log(fantasyTitles);
+
+/*
+Output:
+
+[
+    "The Hobbit",
+    "Harry Potter"
+]
 */
 
 
@@ -216,36 +296,38 @@ Always return the updated accumulator.
 
 /*
 forEach()
--> Perform an action
+-> Iterate
 
 filter()
--> Select elements
+-> Select
 
 map()
--> Transform elements
+-> Transform
 
 reduce()
--> Combine elements into one result
+-> Combine
 
 
-Most Common Uses of reduce():
+map() returns:
+-> A NEW array
 
-1. Sum
-2. Product
-3. Maximum
-4. Minimum
-5. Count Frequencies
-6. Shopping Cart Total
-7. Build Objects
-8. Build Strings
+filter() returns:
+-> A FILTERED array
+
+reduce() returns:
+-> ONE final value
 
 
-Mental Model:
+Most Common Pattern:
 
-reduce() says:
+array
+    .filter(...)
+    .map(...)
 
-"Give me an accumulator.
-I will visit every element.
-You tell me how to update it.
-I'll return the final result."
+
+Example:
+
+books
+    .filter(book => book.genre === "Fantasy")
+    .map(book => book.title);
 */
