@@ -125,8 +125,8 @@ const cart = [
     { item: "Monitor", price: 5000 }
 ];
 
-const cartTotal = cart.reduce((acc, item) => {
-    return acc + item.price;
+const cartTotal = cart.reduce((acc, x) => {
+    return acc + x.price;
 }, 0);
 
 console.log(cartTotal); // 6500
