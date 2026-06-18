@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie WatchList</title>
+    <style>
+        body{
+            
+            background:#212121;
+            color: white;
+           
+        }
+        form{
+             margin: auto;
+            background-color: palevioletred;
+            display: flex;
+            flex-direction: column;
+            width:450px;
+            justify-content: center;
+            align-items: center;
+        }
+        form input{
+             padding: 10px;
+             width: 90%;
+             margin:10px;
+        }
+        .card{
+            display: flex;
+            width: 450px;
+              margin: auto;
+            justify-content: space-around;
+            background-color:rgb(228, 5, 79);
+        }
+        #cardContainer{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <form >
+        <label for="name">Movie Name : </label>
+        <input type="text" placeholder="Enter movie name" id="name">
+
+        <label for="genre">Genre : </label>
+        <input type="text" name="" id="genre" placeholder="Genre">
+
+        <label for="rating">Rating : </label>
+        <input type="number" id="rating" placeholder="Rating">
+
+        <button onclick=" return addMovie()">Add movie</button>
+    </form>
+    <div id="cardContainer">
+
+    </div>
+    <h3 class="totalMovie">TOTAL MOVIES IN WATCHLIST-
+        <span class="idCounter">0</span>
+    </h3>
+    <script src="script.js"></script>
+</body>
+</html>

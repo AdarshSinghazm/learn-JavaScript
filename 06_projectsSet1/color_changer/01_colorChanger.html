@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Color</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .container{
+            border: 2px solid black;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(206, 192, 192);
+        }
+        .container .box{
+            width: 80px;
+            height: 80px;
+            border: 2px solid;
+            
+        }
+        .container .box:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="yellow" style="background: yellow;">Yellow</div>
+        <div class="box" id="pink" style="background-color: pink;">Pink</div>
+        <div class="box" id="steelblue" style="background-color: steelblue;">Blue</div>
+        <div class="box" id="red" style="background-color: red;">Red</div>
+    </div>
+    <h1>Click box to change the color </h1>
+    <script src="script.js"></script>
+</body>
+</html>
