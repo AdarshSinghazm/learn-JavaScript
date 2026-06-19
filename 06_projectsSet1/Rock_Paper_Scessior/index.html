@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scessior</title>
+    <style>
+    .subheading{
+        font-size: larger;
+        color: white;
+        text-align: center;
+    }
+    .roundNo{
+        font-size: larger;
+        font-weight: 700;
+    }
+        .container{
+            width: 650px;
+            height: 650px;
+            border: 2px solid black;
+            margin: auto;
+            margin-top: 90px;
+            background-color:rgb(94, 94, 94);
+            border-radius: 20px;
+        }
+        .heading{
+            font-size: 40px;
+            text-align: center;
+            background-color:gray;
+            color: white;
+            border-radius: 20px;
+        }
+        .choiceText{
+            font-size: 30px;
+            text-align: center;
+            color: white;
+            background-color: #212121;
+        }
+        .choiceContainer{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 90px;
+        }
+        .choiceContainer button{
+            padding: 20px;
+            background-color: transparent;
+            color: white;
+        }
+        .choiceContainer button:hover{
+            cursor: pointer;
+        }
+        .choiceOutput , .overallScore{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .choice , .score{
+            width: 300px;
+            height: 50px;
+            border: 2px solid black;
+            font-size: larger;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .winnerDecide , .overallWinner{
+            font-size: larger;
+            width: 618px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .lastButton , .playButton{
+            /* display: flex;
+            flex-direction: column; */
+            border: 2px solid black;
+            font-size:large;
+            background:rgb(70, 67, 73);
+            color: white;
+            text-align: center;
+            margin: auto;
+            margin-top: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">ROCK PAPER SCESSIOR</div>
+        <p class="subheading">This game is of total 5 Rounds</p>
+        <div class="choiceText">CHOOSE ANY ONE</div>
+        <div class="roundNo">Round : <span id="roundNo">1</span></div>
+        <div class="choiceContainer">
+            <button class="rock">ROCK</button>
+            <button class="paper">PAPER</button>
+            <button class="scessior">SCESSIOR</button>
+        </div>
+        <div class="choiceOutput">
+            <div class="yourChoice choice">Your Choice : <span id="yourChoice"></span></div>
+            <div class="computerChoice choice">Computer Choice : <span id="computerChoice"></span></div>
+        </div>
+        <div class="winnerDecide">Round Winner : <span id="winner"></span></div>
+        <div class="overallScore">
+            <div class="yourScore score "> Your Score :  <span id="yourScore">0</span> </div>
+            <div class="computerScore score"> Computer Score : <span id="computerScore">0</span> </div>
+        </div>
+        <div class="overallWinner">OverallWinner : <span id="overallWinner">Round left => 5</span></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
