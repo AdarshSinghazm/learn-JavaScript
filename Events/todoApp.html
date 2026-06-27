@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .wrapper {
+            background: white;
+            width: 420px;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .add {
+            padding: 10px 16px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .add:hover {
+            background: #4338ca;
+        }
+
+        .charCount {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .maxChar {
+            color: red;
+        }
+
+        .suggestion {
+            font-size: 11px;
+            color: #4f46e5;
+            margin-top: 2px;
+            min-height: 16px;
+        }
+
+        .error {
+            font-size: 11px;
+            color: red;
+            margin-top: 2px;
+            min-height: 16px;
+        }
+
+        .counter {
+            font-size: 12px;
+            color: #999;
+            margin: 16px 0 8px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        li span {
+            flex: 1;
+            font-size: 14px;
+            color: #1a1a1a;
+            word-break: break-all;
+        }
+
+        span.done {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        li button {
+            padding: 4px 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .delete {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .delete:hover {
+            background: #fca5a5;
+        }
+
+        .completeBtn {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .completeBtn:hover {
+            background: #86efac;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h2>My Todo List</h2>
+
+        <div class="input-row">
+            <input type="text" id="todoInput" placeholder="Add a new todo...">
+            <button class="add">Add</button>
+        </div>
+
+        <div class="charCount">0/50 characters</div>
+        <p class="suggestion"></p>
+        <p class="error"></p>
+
+        <p class="counter">0 items remaining</p>
+        <ul id="todoList"></ul>
+    </div>
+
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const add = document.querySelector('.add')
+    const inputFeild = document.querySelector('#todoInput')
+    const ul = document.querySelector('ul')
+    const charCount = document.querySelector('.charCount')
+    const suggestion = document.querySelector('.suggestion')
+    const error = document.querySelector('.error')
+    const counter = document.querySelector('.counter')
+
+    let timer
+
+    function updateCounter() {
+        const remaining = ul.querySelectorAll('li:not(.done-li)').length
+        counter.innerHTML = `${remaining} items remaining`
+    }
+
+    function addTodo() {
+        if(inputFeild.value.trim() === '') {
+            error.innerHTML = 'Please enter something'
+            inputFeild.style.borderColor = 'red'
+            return
+        }
+
+        const li = document.createElement('li')
+        const txt = document.createElement('span')
+        txt.innerHTML = inputFeild.value
+
+        const btnGroup = document.createElement('div')
+        btnGroup.classList.add('btn-group')
+
+        const btn = document.createElement('button')
+        const completeBtn = document.createElement('button')
+
+        completeBtn.classList.add('completeBtn')
+        btn.classList.add('delete')
+        btn.innerHTML = 'Delete'
+        completeBtn.innerHTML = 'Complete'
+
+        btnGroup.appendChild(completeBtn)
+        btnGroup.appendChild(btn)
+
+        ul.appendChild(li)
+        li.appendChild(txt)
+        li.appendChild(btnGroup)
+
+        const event = new CustomEvent('todoAdded', {
+            detail: { text: inputFeild.value }
+        })
+        document.dispatchEvent(event)
+
+        inputFeild.value = ''
+        charCount.innerHTML = '0/50 characters'
+        charCount.classList.remove('maxChar')
+        suggestion.innerHTML = ''
+        error.innerHTML = ''
+        inputFeild.style.borderColor = '#ddd'
+
+        updateCounter()
+    }
+
+    add.addEventListener('click', addTodo)
+
+    ul.addEventListener('click', function(e) {
+        if(e.target.classList.contains('delete')) {
+            e.target.closest('li').remove()
+            updateCounter()
+        }
+        if(e.target.classList.contains('completeBtn')) {
+            const span = e.target.closest('li').querySelector('span')
+            const li = e.target.closest('li')
+            span.classList.toggle('done')
+            li.classList.toggle('done-li')
+            e.target.innerHTML = span.classList.contains('done') ? 'Undo' : 'Complete'
+            updateCounter()
+        }
+    })
+
+    inputFeild.addEventListener('keydown', function(e) {
+        if(e.key === 'Enter') addTodo()
+        if(e.key === 'Escape') {
+            inputFeild.value = ''
+            charCount.innerHTML = '0/50 characters'
+            charCount.classList.remove('maxChar')
+            suggestion.innerHTML = ''
+            error.innerHTML = ''
+            inputFeild.style.borderColor = '#ddd'
+        }
+    })
+
+    inputFeild.addEventListener('focus', function() {
+        inputFeild.style.borderColor = '#4f46e5'
+        error.innerHTML = ''
+    })
+
+    inputFeild.addEventListener('blur', function() {
+        if(inputFeild.value.trim() === '') {
+            inputFeild.style.borderColor = 'red'
+        } else {
+            inputFeild.style.borderColor = '#16a34a'
+        }
+    })
+
+    inputFeild.addEventListener('input', function(e) {
+        let len = e.target.value.length
+        charCount.innerHTML = `${len}/50 characters`
+        charCount.classList.toggle('maxChar', len > 50)
+
+        suggestion.innerHTML = ''
+        clearTimeout(timer)
+        timer = setTimeout(function() {
+            if(e.target.value.trim() !== '') {
+                suggestion.innerHTML = `Add "${e.target.value}" as a todo?`
+            }
+        }, 500)
+    })
+
+    document.addEventListener('todoAdded', function(e) {
+        console.log(`Todo added: "${e.detail.text}"`)
+    })
+
+})
+</script>
+</html>
