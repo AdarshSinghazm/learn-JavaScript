@@ -26,7 +26,7 @@ document.getElementById('avengers').addEventListener('click', function (e) {
 });
 ```
 
-Here, `spiderMan` is an image inside the `avengers` list. Both listeners are written the normal way, so both run during the **bubbling** stage.
+Here, `spiderMan` is an image inside the `avengers` list. Both listeners are  written the normal way, so both run during the **bubbling** stage.
 
 **Click on Spider-Man → output:**
 ```

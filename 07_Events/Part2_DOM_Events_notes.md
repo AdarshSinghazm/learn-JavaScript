@@ -6,7 +6,7 @@ Continued from Part 1. Everything here was learned step by step on the same To-D
 
 ## 1. `this` vs `e.currentTarget` vs `e.target`
 
-Three things that all sound like "the element" but mean very different things.
+Three things that  all sound like "the element" but mean very different things.
 
 ```js
 ul.addEventListener('click', function(e) {
