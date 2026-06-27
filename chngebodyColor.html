@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Api</title>
+</head>
+<body>
+    <h1>Color Changer</h1>
+    <button id="stop">STOP</button>
+    <button id="start">START</button>
+</body>
+
+<script>
+     let r = 0, g = 0, b = 0
+     const changeColor = function(){
+        r = Math.floor(Math.random() * 255)
+        g = Math.floor(Math.random() * 255)
+        b = Math.floor(Math.random() * 255)
+        document.querySelector('body').style.backgroundColor= `rgb(${r}, ${g}, ${b})`
+     }
+    let intervalID
+     
+    document.querySelector('#start').addEventListener(
+        'click',function(){
+            if(!intervalID){
+            intervalID=setInterval(changeColor,1000)
+        }
+        }
+    )
+    document.querySelector('#stop').addEventListener(
+        'click',function(){
+            clearInterval(intervalID)
+            intervalID=null
+        }
+    )
+  
+</script>
+</html>
