@@ -165,18 +165,67 @@ console.log(paneer.hasOwnProperty('printDetail'));         // false — inherite
 
 ---
 
-## Modern Syntax: Classes (Same Thing, Nicer Look)
+## Modern Ways to Set Up Prototypes (Real World Usage)
+
+### 1. Classes with `extends` — most common in real projects (90% of codebases)
 ```js
-class Person {
+class Animal {
   constructor(name) {
     this.name = name;
   }
-  greet() {
-    console.log(`Hi, I'm ${this.name}`);
+  walk() {
+    console.log(`${this.name} is walking`);
   }
 }
+
+class Dog extends Animal {  // sets up prototype chain automatically
+  bark() {
+    console.log("woof!");
+  }
+}
+
+const d = new Dog("Bruno");
+d.walk(); // inherited from Animal via prototype chain
+d.bark(); // own method
 ```
-This is just **syntax sugar** over the prototype pattern above — `greet` still ends up on `Person.prototype` under the hood. Classes don't replace prototypes, they just hide the manual `.prototype.method = ...` wiring.
+`extends` wires up the prototype chain under the hood — `Dog.prototype.__proto__ === Animal.prototype`. You get inheritance without manually touching `.prototype` at all. Classes don't replace prototypes, they're just cleaner syntax over the same mechanism.
+
+### 2. `Object.create` — when you want pure prototype linking without classes
+```js
+const animal = {
+  walk() { console.log("walking"); }
+};
+
+const dog = Object.create(animal); // dog.__proto__ === animal
+dog.bark = function() { console.log("woof"); };
+
+dog.walk(); // inherited
+dog.bark(); // own
+```
+Used in functional/composition patterns where constructor functions or classes feel like overkill. Very explicit — you can clearly see what the prototype is.
+
+### 3. `__proto__` in object literal — quick and simple
+```js
+const dog = {
+  __proto__: animal,
+  barks: true
+};
+```
+Fine for quick scripting/prototyping but not commonly seen in large codebases.
+
+### 4. `Object.setPrototypeOf` — avoid in real projects
+```js
+Object.setPrototypeOf(dog, animal); // changes prototype after object is created
+```
+This exists but is **discouraged** — changing the prototype of an already existing object kills JS engine performance. Engines optimize prototype chains at creation time; mutating them later breaks those optimizations. Only used in rare edge cases like runtime patching or meta-programming in library code. You'll almost never write this in a normal project.
+
+### Real world ranking
+| Method | When used |
+|---|---|
+| `class` + `extends` | Everyday code — most common |
+| `Object.create` | Functional patterns, utility libs |
+| `__proto__` in literals | Quick scripting/prototyping |
+| `Object.setPrototypeOf` | Avoid — performance killer |
 
 ---
 
@@ -209,3 +258,5 @@ paneer.hasOwnProperty('printDetail'); // false (inherited)
 - [ ] Do you know the difference between `__proto__` and `.prototype`?
 - [ ] Can you trace what `new` does in 3 steps from memory?
 - [ ] Do you understand why shared methods on `.prototype` save memory vs copying onto every instance?
+- [ ] Can you explain the 4 modern ways to set up prototypes and when to use each?
+- [ ] Do you know why `Object.setPrototypeOf` is discouraged in real projects?
