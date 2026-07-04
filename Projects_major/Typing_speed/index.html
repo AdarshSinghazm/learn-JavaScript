@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeBoost</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <nav>
+                <div class="navBtn logo">⚡TypeBoost</div>
+                <div class="navBtn toggleMode">☀️Light</div>
+            </nav>
+            
+        </header>
+        <main>
+            <section class="heading">
+                <div class="mainHeading">Typing Speed Test</div>
+                <div class="subHeading">Type the given text as fast and acuurately as you can</div>
+            </section>
+
+            <section class="durationOptions"> Select Timer:
+                <div class="durationBtn thirty active">30</div>
+                <div class="durationBtn sixty">60</div>
+                <div class="durationBtn ninety">90</div>
+                <div class="durationBtn oneTwenty">120</div>
+            </section>
+
+            <section class="typingArea">
+                <section class="paragraph"></section>
+            <textarea name="para" id="input" placeholder="Start Typing Here" disabled></textarea>
+
+            </section>
+            <section class="score">
+                <div class="scoreBtn timeLeft">
+                    <p>Time Left</p>
+                    <div class="timer">00:30</div>
+                </div>
+                <div class="scoreBtn wpm">
+                     <p>WPM</p>
+                    <div class="wpmScore">0</div>
+                </div>
+                <div class="scoreBtn accuracy">
+                     <p>Accuracy</p>
+                    <div class="accuracyScore">100%</div>
+                </div>
+                <div class="scoreBtn errors">
+                    <p>Errors</p>
+                    <div class="errorScore">0</div>
+                </div>
+            </section>
+
+            <section class="progressBar">
+                <div class="progressFill"></div>
+            </section>
+
+            <section class="buttons">
+                <button class="start">Start Test</button>
+                <button class="reset">Reset</button>
+            </section>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
