@@ -13,15 +13,14 @@
 
 .light-mode{
     --color-primary: #c9930a;
-    --bg-page: #faf6ec;
-    --bg-card: #fdfaf3;
-    --bg-soft: #fdeaa0;
+    --bg-page: #f5efe0;
+    --bg-card: #f9f3e2;
+    --bg-soft: #f0dfa0;
     --text-primary: #2b2620;
     --text-secondary: #7a7266;
-    --border-color: #ece2c4;
+    --border-color: #ddd0a8;
     --border-focus: #c9930a;
 }
-
 
 *{
     margin: 0;
@@ -32,6 +31,9 @@
 
 body{
     background-color: var(--bg-page);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga' 1, 'kern' 1;
 }
 
 .app{
@@ -47,6 +49,10 @@ body{
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
+.light-mode .app{
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
 nav{
     display: flex;
     justify-content: space-between;
@@ -54,19 +60,23 @@ nav{
 
 .mainHeading{
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 10px;
     color: var(--text-primary);
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
 }
 
 .mainHeading>p{
     font-size: 14px;
     font-weight: 400;
     color: var(--text-secondary);
+    letter-spacing: normal;
+    font-family: 'Inter', sans-serif;
 }
 
 .toggleMode{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     padding: 10px;
     color: var(--text-secondary);
@@ -88,6 +98,7 @@ nav{
     border: none;
     color: var(--text-primary);
     font-size: 15px;
+    font-weight: 400;
     border-radius: var(--radius-md);
 }
 
@@ -130,6 +141,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{
     border-radius: var(--radius-md);
     font-size: 14px;
     font-weight: 600;
+    letter-spacing: 0.01em;
     white-space: nowrap;
 }
 
@@ -169,7 +181,9 @@ input[type="time"]::-webkit-calendar-picker-indicator{
 .count{
     padding: 5px;
     font-size: 12px;
+    font-weight: 500;
     color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
 }
 
 .taskList{
@@ -187,6 +201,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{
     padding: 12px;
     color: var(--text-primary);
     font-size: 15px;
+    font-weight: 400;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -230,15 +245,18 @@ input[type="checkbox"]:checked::after{
 
 .category{
     color: var(--text-secondary);
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 500;
     margin-top: 5px;
 }
 
 .time{
     margin-left: auto;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-secondary);
     white-space: nowrap;
+    font-variant-numeric: tabular-nums;
 }
 
 .noTask{
@@ -249,18 +267,22 @@ input[type="checkbox"]:checked::after{
     color: var(--text-primary);
     font-size: 15px;
 }
+
 .delete{
     color: var(--text-secondary);
     cursor: pointer;
     font-size: 20px;
     transition: color 0.2s ease;
 }
+
 .delete:hover{
     color: red;
 }
+
 .title{
     transition: all 0.3s ease;
 }
+
 .taskCompleted{
     text-decoration: line-through;
     color: var(--text-secondary);
