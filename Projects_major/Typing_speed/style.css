@@ -60,22 +60,25 @@ body{
 }
 
 .app{
-    width: 80%;
-    background-color: var(--bg-card);
-    margin: auto;
-    margin-top: 2%;
-    padding: 5px;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
-
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
 }
 
 nav{
     display: flex;
     justify-content: space-between;
-    background-color: var(--bg-soft);
-    padding: 10px;
-    border-radius: var(--radius-lg);
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 20px 60px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .navBtn{
@@ -94,16 +97,21 @@ nav{
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     letter-spacing: normal;
+    transition: opacity 0.2s ease;
+}
+
+.toggleMode:hover{
+    opacity: 0.7;
 }
 
 .heading{
-    background-color: var(--bg-card);
+    background-color: var(--bg-page);
     text-align: center;
-    margin: 20px 20px;
+    margin: 50px 20px 30px;
 }
 
 .mainHeading{
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 8px;
     color: var(--text-primary);
@@ -152,13 +160,16 @@ nav{
 }
 
 .typingArea{
-    background: var(--bg-card);
-    margin: 20px 20px;
+    background: var(--bg-page);
+    margin: 20px auto;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .paragraph{
     background-color: var(--bg-soft);
-    width: 80%;
+    width: 100%;
     margin: auto;
     padding: 15px 20px;
     margin-top: 10px;
@@ -174,7 +185,7 @@ nav{
 }
 
 #input{
-    width: 80%;
+    width: 100%;
     display: block;
     margin: auto;
     padding: 10px;
@@ -183,17 +194,27 @@ nav{
     border-radius: var(--radius-md);
     font-size: 18px;
     font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s ease;
 }
 
 #input::placeholder{
     color: var(--text-secondary);
 }
 
+#input:focus{
+    outline: none;
+    border-color: var(--border-focus);
+}
+
+#input:disabled { color: var(--text-primary); opacity: 0.3; }
+
 .score{
-    background: var(--bg-card);
+    background: var(--bg-page);
     display: flex;
     justify-content: space-around;
-    margin: 12px 20px;
+    margin: 12px auto;
+    width: 100%;
+    max-width: 800px;
 }
 
 .scoreBtn{
@@ -205,6 +226,11 @@ nav{
     cursor: pointer;
     color: var(--color-primary-dark);
     font-weight: 500;
+    transition: border-color 0.2s ease;
+}
+
+.scoreBtn:hover{
+    border-color: var(--border-focus);
 }
 
 .timer{
@@ -236,8 +262,9 @@ nav{
 }
 
 .progressBar{
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 12px auto;
+    width: 100%;
+    max-width: 800px;
     height: 18px;
     background-color: var(--bg-soft);
     border-radius: var(--radius-md);
@@ -254,11 +281,10 @@ nav{
 .buttons{
     display: flex;
     height: fit-content;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background: var(--bg-card);
+    margin: 15px auto;
+    width: 100%;
+    max-width: 800px;
+    background: var(--bg-page);
     justify-content: center;
     gap: 40px;
 }
@@ -292,32 +318,4 @@ button{
 
 .reset:hover{
     background-color: var(--color-primary-light);
-}
-
-#input{
-    transition: border-color 0.2s ease;
-}
-
-#input:focus{
-    outline: none;
-    border-color: var(--border-focus);
-}
-
-#input:disabled { color: var(--text-primary); opacity: 0.3; }
-
-.toggleMode{
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-}
-
-.toggleMode:hover{
-    opacity: 0.7;
-}
-
-.scoreBtn{
-    transition: border-color 0.2s ease;
-}
-
-.scoreBtn:hover{
-    border-color: var(--border-focus);
 }
