@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <nav>
+            <div class="mainHeading">
+                To-Do List
+                <p class="subHeading">Stay organized. Get things done.</p>
+            </div>
+            <div class="toggleMode">☀️Light</div>
+        </nav>
+
+        <section class="userInput">
+            <input type="text" name="" id="userInput" placeholder="What do you want to do?">
+            <label for="taskTime" style="font-size: 13px; color: var(--text-secondary);">Time</label>
+            <input type="time" id="taskTime">
+            <button class="add">+ Add task</button>
+        </section>
+        <section class="section2">
+            <div class="filter">
+            <div class="filterBtn all">All</div>
+            <div class="filterBtn completed">Completed</div>
+            </div>
+        <div class="count">0 task</div>
+        </section>
+        <section class="taskList">
+            <div class="noTask">Nothing is here</div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
