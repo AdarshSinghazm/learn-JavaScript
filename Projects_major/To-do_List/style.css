@@ -29,6 +29,10 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+html, body{
+    height: 100%;
+}
+
 body{
     background-color: var(--bg-page);
     -webkit-font-smoothing: antialiased;
@@ -37,31 +41,30 @@ body{
 }
 
 .app{
-    width: 50%;
-    background-color: var(--bg-card);
-    margin: auto;
-    margin-top: 3%;
-    padding: 15px;
-    border-radius: var(--radius-lg);
-    max-height: 600px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
-.light-mode .app{
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 nav{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 20px 60px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .mainHeading{
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    padding: 10px;
+    padding: 0;
     color: var(--text-primary);
     font-family: 'Space Grotesk', 'Inter', sans-serif;
     letter-spacing: -0.02em;
@@ -73,26 +76,34 @@ nav{
     color: var(--text-secondary);
     letter-spacing: normal;
     font-family: 'Inter', sans-serif;
+    margin-top: 4px;
 }
 
 .toggleMode{
     font-size: 16px;
     font-weight: 600;
-    padding: 10px;
     color: var(--text-secondary);
     cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.toggleMode:hover{
+    opacity: 0.7;
 }
 
 .userInput{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 10px;
+    justify-content: center;
+    margin: 40px auto 10px;
     gap: 10px;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 20px;
 }
 
 #userInput{
-    padding: 10px;
+    padding: 12px 16px;
     flex: 1;
     background: var(--bg-soft);
     border: none;
@@ -135,7 +146,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{
 }
 
 .add{
-    padding: 10px 16px;
+    padding: 12px 20px;
     background-color: var(--color-primary);
     border: none;
     border-radius: var(--radius-md);
@@ -152,14 +163,15 @@ input[type="time"]::-webkit-calendar-picker-indicator{
 .section2{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
     align-items: center;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 20px;
 }
 
 .filter{
     display: flex;
-    width: 20%;
-    justify-content: space-between;
     gap: 8px;
 }
 
@@ -189,7 +201,10 @@ input[type="time"]::-webkit-calendar-picker-indicator{
 .taskList{
     overflow-y: auto;
     flex: 1;
-    padding: 10px;
+    margin: 10px auto 40px;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -206,6 +221,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{
     align-items: center;
     gap: 10px;
     transition: all ease 0.3s;
+    background-color: var(--bg-card);
 }
 
 input[type="checkbox"]{
@@ -266,6 +282,7 @@ input[type="checkbox"]:checked::after{
     padding: 12px;
     color: var(--text-primary);
     font-size: 15px;
+    background-color: var(--bg-card);
 }
 
 .delete{

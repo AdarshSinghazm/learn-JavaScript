@@ -29,6 +29,15 @@ addBtn.addEventListener('click',function(){
     resetEverything()
 })
 
+userInput.addEventListener('keydown',function(e){
+    if(e.key=== 'Enter'){
+        addBtn.click()
+    }
+    else if(e.key==='Escape'){
+        userInput.value=''
+    }
+})
+
 function addTask(){
     noOfTask++;
     count.innerHTML=`${noOfTask} task`
@@ -80,6 +89,7 @@ taskList.addEventListener('click',function(e){
         e.target.closest('.task').remove()
         noOfTask--;
         count.innerHTML=`${noOfTask} task`
+        if(noOfTask==0) noTask.style.display='block'
     }
     if(e.target.classList.contains('checkbox')){
         const thisTask = e.target.closest('.task')
@@ -102,10 +112,12 @@ completeBtn.addEventListener('click',function(e){
         else c++;
     })
     count.innerHTML=`${c} task`  
+
+    if(c==0) noTask.style.display='block'
     
 })
 allBtn.addEventListener('click',function(e){
-
+    if(noOfTask!=0) noTask.style.display='none'
     allBtn.classList.toggle("active")
     completeBtn.classList.remove("active")
     const ar = document.querySelectorAll('.task')
