@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <nav>
+            <div class="logo navBtn">Focus<span>Flow</span></div>
+            <div class="toggleMode navBtn">☀️Light</div>
+        </nav>
+        <section class="main">
+            <div class="modes">
+                <div class="mode pomodoro">pomodoro</div>
+                <div class="mode shortBreak">short break</div>
+                <div class="mode longBreak">long break</div>
+            </div>
+            <div class="timer">
+                25:00
+            </div>
+            <div class="buttons">
+                <button class="btn start">start</button>
+
+                <button class="btn icon-btn refresh">
+                    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                        <path d="M21 4v6h-6" />
+                    </svg>
+                </button>
+
+                <button class="btn icon-btn settings">
+                    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="overlay">
+            <div class="settingsBox">
+                <label>
+                    pomodoro(minutes)
+                    <input type="number" id="pomodoroInput" value="25">
+                </label>
+                <label>
+                    short break(minutes)
+                    <input type="number" id="shortBreakInput" value="5">
+                </label>
+                <label>
+                    long break(minutes)
+                    <input type="number" id="longBreakInput" value="10">
+                </label>
+                <div class="btn save">Save</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
