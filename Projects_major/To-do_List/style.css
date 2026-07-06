@@ -312,3 +312,55 @@ input[type="checkbox"]:checked::after{
     text-decoration: line-through;
     color: var(--text-secondary);
 }
+@media (max-width: 600px){
+    nav{
+        padding: 16px 20px;
+    }
+
+    .mainHeading{
+        font-size: 20px;
+    }
+
+    .mainHeading>p{
+        font-size: 12px;
+    }
+
+    .userInput{
+        flex-direction: column;
+        align-items: stretch;
+        margin: 24px auto 10px;
+        gap: 8px;
+    }
+
+    .userInput label{
+        white-space: normal;
+    }
+
+    input[type="time"]{
+        width: 100%;
+    }
+
+    .add{
+        width: 100%;
+        text-align: center;
+    }
+
+    .section2{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .filter{
+        flex-wrap: wrap;
+    }
+
+    .task{
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .time{
+        margin-left: 0;
+    }
+}

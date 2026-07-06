@@ -327,3 +327,64 @@ button{
 .reset:hover{
     background-color: var(--color-primary-light);
 }
+@media (max-width: 600px){
+    nav{
+        padding: 16px 20px;
+    }
+
+    .navBtn{
+        font-size: 16px;
+    }
+
+    .heading{
+        margin: 30px 16px 20px;
+    }
+
+    .mainHeading{
+        font-size: 26px;
+    }
+
+    .subHeading{
+        font-size: 13px;
+    }
+
+    .durationOptions{
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .durationBtn{
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .paragraph{
+        font-size: 16px;
+        height: 110px;
+        padding: 12px 14px;
+    }
+
+    #input{
+        font-size: 15px;
+        height: 60px;
+    }
+
+    .score{
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .timer, .wpmScore, .accuracyScore, .errorScore{
+        font-size: 15px;
+    }
+
+    .buttons{
+        gap: 16px;
+    }
+
+    button{
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}

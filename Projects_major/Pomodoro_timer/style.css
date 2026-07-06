@@ -227,3 +227,53 @@ nav{
     margin: auto;
 }
 
+@media (max-width: 600px){
+    .main{
+        width: 90%;
+        margin-top: 12vh;
+    }
+
+    .logo{
+        font-size: 22px;
+        padding: 16px;
+    }
+
+    .toggleMode{
+        font-size: 14px;
+        padding: 16px;
+    }
+
+    .modes{
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .mode{
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .timer{
+        width: 100%;
+        font-size: 72px;
+    }
+
+    .buttons{
+        gap: 10px;
+    }
+
+    .btn.start{
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .btn.icon-btn{
+        width: 40px;
+        height: 40px;
+    }
+
+    .settingsBox{
+        width: 85%;
+        padding: 20px;
+    }
+}
