@@ -1,5 +1,6 @@
 :root{
     --color-primary: #ffcc00;
+    --color-primary-rgb: 255, 204, 0;
     --color-primary-dark: #ffffff;
     --color-primary-light: #262000;
 
@@ -23,6 +24,7 @@
 
 .light-mode{
     --color-primary: #c9930a;
+    --color-primary-rgb: 201, 147, 10;
     --color-primary-dark: #8a6a00;
     --color-primary-light: #f7edd0;
 
@@ -40,7 +42,6 @@
     --border-color: #ece2c4;
     --border-focus: #c9930a;
 }
-
 *{
     padding: 0;
     margin: 0;
@@ -53,16 +54,22 @@ html, body{
 }
 
 body{
-    background-color: var(--bg-page);
+    background: radial-gradient(circle at 20% 20%, rgba(var(--color-primary-rgb), 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(var(--color-primary-rgb), 0.05) 0%, transparent 40%),
+                var(--bg-page);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga' 1, 'kern' 1;
+    transition: background 0.3s ease;
 }
 
 .app{
     width: 100%;
     min-height: 100vh;
-    background-color: var(--bg-page);
+    background-color: transparent;
     margin: 0;
     padding: 0;
     border-radius: 0;
@@ -75,7 +82,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--bg-card);
+    background-color: transparent;
     padding: 20px 60px;
     border-radius: 0;
     border-bottom: 1px solid var(--border-color);
@@ -105,7 +112,7 @@ nav{
 }
 
 .heading{
-    background-color: var(--bg-page);
+    background-color: transparent;
     text-align: center;
     margin: 50px 20px 30px;
 }
@@ -160,7 +167,7 @@ nav{
 }
 
 .typingArea{
-    background: var(--bg-page);
+   background-color: transparent;
     margin: 20px auto;
     width: 100%;
     max-width: 800px;
@@ -209,7 +216,7 @@ nav{
 #input:disabled { color: var(--text-primary); opacity: 0.3; }
 
 .score{
-    background: var(--bg-page);
+    background-color: transparent;
     display: flex;
     justify-content: space-around;
     margin: 12px auto;
@@ -284,7 +291,7 @@ nav{
     margin: 15px auto;
     width: 100%;
     max-width: 800px;
-    background: var(--bg-page);
+    background-color: transparent;
     justify-content: center;
     gap: 40px;
 }
