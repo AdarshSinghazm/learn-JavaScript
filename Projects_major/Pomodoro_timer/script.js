@@ -60,6 +60,10 @@ function setTime(){
         alert("This is FocusFlow, not FocusForever. 60 min max.")
         timeMinutes=60
     }
+    if(timeMinutes<0){
+        alert("Bro are you on something?")
+        timeMinutes=0
+    }
     totalSeconds = timeMinutes * 60
     timer.textContent = formatTime(totalSeconds)
 
@@ -92,6 +96,10 @@ function timerStart(){
     if(isRunning) return
     isRunning = true
     t = setInterval(function(){
+        if(totalSeconds <= 0){
+            stopTimer()
+            return
+        }
         totalSeconds--
         timer.textContent = formatTime(totalSeconds)
         if(totalSeconds <= 0){
