@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
+    <title>QuickTools — Productivity Tools by Adarsh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,50 +12,29 @@
 <body>
 
     <div class="app">
-        <nav>
-            <div class="logo">Adarsh<span>.</span></div>
+
+        <aside class="sidebar">
+            <div class="logo">QuickTools<span>.</span></div>
+
+            <nav class="navList">
+                <div class="navItem active" data-src="./Typing_speed/index.html">
+                    <span class="navText">Typing Speed Test</span>
+                </div>
+                <div class="navItem" data-src="./Pomodoro_timer/index.html">
+                    <span class="navText">FocusFlow</span>
+                </div>
+                <div class="navItem" data-src="./To-do_List/index.html">
+                    <span class="navText">To-Do List</span>
+                </div>
+            </nav>
+
             <div class="toggleMode">☀️Light</div>
-        </nav>
+        </aside>
 
-        <section class="heading">
-            <h1 class="mainHeading">Practice Stack</h1>
-            <p class="subHeading">Vanilla JS, HTML & CSS — practice projects, not a final form</p>
-        </section>
+        <main class="main">
+            <iframe class="projectFrame" src="./Typing_speed/index.html" title="Project view"></iframe>
+        </main>
 
-        <section class="cards">
-
-            <a href="./Pomodoro_timer/index.html" class="card">
-                <div class="cardTop">
-                    <span class="tag">JS · CSS · HTML</span>
-                </div>
-                <h2 class="cardTitle">FocusFlow</h2>
-                <p class="cardDesc">A Pomodoro-style focus timer with custom session lengths, light/dark mode, and settings you can tweak on the fly.</p>
-                <span class="cardLink">View project →</span>
-            </a>
-
-            <a href="./To-do_List/index.html" class="card">
-                <div class="cardTop">
-                    <span class="tag">JS · CSS · HTML</span>
-                </div>
-                <h2 class="cardTitle">To-Do List</h2>
-                <p class="cardDesc">A task manager with filters, completion tracking, and localStorage so your tasks stick around after a refresh.</p>
-                <span class="cardLink">View project →</span>
-            </a>
-
-            <a href="./Typing_speed/index.html" class="card">
-                <div class="cardTop">
-                    <span class="tag">JS · CSS · HTML</span>
-                </div>
-                <h2 class="cardTitle">Typing Speed Test</h2>
-                <p class="cardDesc">A WPM and accuracy tracker with live scoring and a progress bar to test how fast you actually type.</p>
-                <span class="cardLink">View project →</span>
-            </a>
-
-        </section>
-
-        <footer class="footer">
-            <p>Built by Adarsh · <a href="https://github.com/AdarshSinghazm/learn-JavaScript" target="_blank" class="footerLink">GitHub</a></p>
-        </footer>
     </div>
 
     <script src="script.js"></script>
