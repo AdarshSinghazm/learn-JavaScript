@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowMoney : Track your expenses</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">FlowMoney</div>
+        <div class="toggleMode">Light☀️</div>
+    </nav>
+    <section class="moneyDetails">
+            <div class="balance">
+                Balance
+                <span class="balanceAmount">$0</span>
+            </div>
+            <div class="setBudget">
+            <input type="number" id="startingBalance" placeholder="Set starting balance">
+            <button id="setBalanceBtn">Set</button>
+            </div>
+            <div class="income">Income
+                <span class="incomeAmount">$0</span>
+            </div>
+            <div class="expenses">
+                Expense
+                <span class="expenseAmount">$0</span>
+            </div>
+    </section>
+    <section class="addTransactions">
+
+        <h3 class="heading">ADD TRANSACTION</h3>
+
+        <label for="description">Description</label>
+        <input type="text" name="" id="description">
+
+        <label for="amount">Amount</label>
+        <input type="number" name="" id="amount">
+
+        <label for="type">Type</label>
+        <select  id="type">
+            <option value="">Select type</option>
+            <option value="income">income</option>
+            <option value="expense">Expense</option>
+        </select>
+
+        <input type="text" id="category" list="categoryOptions">
+        <datalist id="categoryOptions">
+            <option value="Food">
+            <option value="Transport">
+            <option value="Entertainment">
+            <option value="Shopping">
+        </datalist>
+
+        <label for="date">Date</label>
+        <input type="date" name="" id="date">
+
+        <button id="addBtn">Add Transaction</button>
+    </section>
+
+    <section class="recentTransactions">
+            <h3 class="heading">RECENT TRANSACTIONS</h3>
+            <div class="filterBtn">
+                <button class="allBtn">All</button>
+                <button class="incomeBtn">Income</button>
+                <button class="expenseBtn">Expense</button>
+            </div>
+            <ul class="list">
+                <li id="emptyState">Nothing is here</li>
+            </ul>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

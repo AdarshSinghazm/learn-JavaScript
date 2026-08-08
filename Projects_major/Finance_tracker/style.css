@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+:root {
+    --bg: #000000;
+    --surface: #141414;
+    --surface-hover: #1C1C1C;
+    --border: #2A2A2A;
+    --text: #EDEDED;
+    --text-muted: #8A8A8A;
+    --income: #34C77B;
+    --expense: #FF6B6B;
+    --balance: #F2B84B;
+    --radius: 10px;
+}
+
+body.light-mode {
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --surface-hover: #F0F0F0;
+    --border: #E0E0E0;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --income: #1C9A5B;
+    --expense: #D9483F;
+    --balance: #C98A2E;
+}
+
+body {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    width: 70%;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.logo::before {
+    content: '$';
+    display: inline-block;
+    background: var(--balance);
+    color: var(--bg);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 28px;
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.toggleMode {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+}
+
+.toggleMode:hover {
+    border-color: var(--balance);
+    color: var(--text);
+}
+
+
+.moneyDetails {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.balance,
+.income,
+.expenses {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.balance {
+    border-color: var(--balance);
+    box-shadow: 0 0 0 1px rgba(242, 184, 75, 0.15);
+}
+
+.balanceAmount,
+.incomeAmount,
+.expenseAmount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.balanceAmount { color: var(--balance); }
+.incomeAmount { color: var(--income); }
+.expenseAmount { color: var(--expense); }
+
+.setBudget {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+.setBudget input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s ease;
+}
+
+.setBudget input:focus {
+    border-color: var(--balance);
+}
+
+.setBudget button {
+    background: var(--balance);
+    color: #1A1200;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+.setBudget button:hover { filter: brightness(1.08); }
+.setBudget button:active { transform: scale(0.98); }
+
+
+.addTransactions {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.addTransactions label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: -6px;
+}
+
+.addTransactions input,
+.addTransactions select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.addTransactions input:focus,
+.addTransactions select:focus {
+    border-color: var(--balance);
+}
+
+.addTransactions select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238A8A8A'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: filter 0.15s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(0.9);
+}
+
+body.light-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.4);
+}
+
+body.light-mode input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(0.1);
+}
+
+#addBtn {
+    margin-top: 8px;
+    background: var(--balance);
+    color: #1A1200;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+#addBtn:hover { filter: brightness(1.08); }
+#addBtn:active { transform: scale(0.98); }
+
+
+.recentTransactions {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.filterBtn {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0 16px;
+}
+
+.filterBtn button {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filterBtn button:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+}
+
+.filterBtn button.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: var(--bg);
+    border-left: 3px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.list li.income-entry { border-left-color: var(--income); }
+.list li.expense-entry { border-left-color: var(--expense); }
+
+#emptyState {
+    justify-content: center;
+    color: var(--text-muted);
+    font-style: italic;
+    border-left-color: var(--border);
+}
+
+.transactionInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.transactionDesc {
+    font-weight: 500;
+}
+
+.transactionCategory {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.transactionAmount {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+}
+
+.transactionDate {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.list li.income-entry .transactionAmount { color: var(--income); }
+.list li.expense-entry .transactionAmount { color: var(--expense); }
+
+.del {
+    margin-left: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.del:focus-visible {
+    outline: 2px solid var(--balance);
+    outline-offset: 2px;
+}
+
+.del:hover {
+    color: var(--expense);
+    background: var(--surface-hover);
+}
+
+
+@media (max-width: 640px) {
+    body {
+        width: 92%;
+    }
+    .moneyDetails {
+        grid-template-columns: 1fr 1fr;
+    }
+}
